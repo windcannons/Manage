@@ -113,14 +113,13 @@ function loginBtn() {
     }).then(res => {
         window.localStorage.setItem("token", res.data.obj.token)
         if (res.data.code === 200) {
-            adminInfo().then(ress=>{
+            adminInfo().then(ress => {
                 console.log(ress)
-                if (ress.status===200){
-                    window.localStorage.setItem("admin",JSON.stringify(ress.data))
+                if (ress.status === 200) {
+                    window.localStorage.setItem("admin", JSON.stringify(ress.data))
                     router.replace({path: '/'})
                 }
             })
-
         }
     })
 }

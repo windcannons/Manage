@@ -19,9 +19,9 @@ import {
 
 import {
     ref,
+    provide,
     onMounted,
     reactive,
-    provide,
     watch,
     getCurrentInstance
 } from 'vue'
@@ -270,8 +270,8 @@ function SignOut() {
                     <!-- 设置语言-->
                     <div class="lang">
                         <img v-show="NowLang"
-                             src="../public/APP/chImg.jpg"
-                             alt="">
+                        src="../public/APP/chImg.jpg"
+                        alt="">
                         <img v-show="!NowLang"
                              src="https://img1.baidu.com/it/u=1608439503,245312181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=333"
                              alt="">
