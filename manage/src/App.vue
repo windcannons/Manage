@@ -9,8 +9,7 @@ provide("echarts", echarts);
 
 import {
     RouterLink,
-    RouterView,
-    useRoute
+    RouterView
 } from 'vue-router'
 // 引入element 相关组件
 import {
@@ -21,9 +20,7 @@ import {
     ref,
     onMounted,
     reactive,
-    provide,
-    watch,
-    getCurrentInstance
+    provide
 } from 'vue'
 
 // 引入全屏组件
@@ -32,8 +29,7 @@ import screenfull
 import router
     from "@/router";
 import {
-    ElMessageBox,
-    ElNotification
+    ElMessageBox
 } from "element-plus";
 
 // 页面名称
@@ -83,29 +79,7 @@ function changeNav(index) {
     checkNavNun.value = index
 }
 
-let userInfos = reactive(JSON.parse(window.localStorage.getItem("admin")) || {})
-const vm = getCurrentInstance().proxy
-// 监听$route对象的变化
-watch(() => vm.$route, (to, from) => {
-    if (from.path === "/LoginView") {
-        let useinfo = JSON.parse(window.localStorage.getItem("admin"))
-        for (let k in useinfo) {
-            userInfos[k] = useinfo[k]
-        }
-        if (window.localStorage.getItem("token")) {
-            ElNotification({
-                title: 'Success',
-                message: '登录成功',
-                type: 'success',
-            })
-        }
-    }
-})
-
 onMounted(() => {
-    if (!window.localStorage.getItem("token")) {
-        router.replace({path: '/LoginView'})
-    }
     let path = location.pathname
     if (path === '') {
         checkNavNun.value = 0
@@ -186,8 +160,6 @@ function CancelOut() {
 
 function SignOut() {
     dialogVisible.value = false
-    window.localStorage.removeItem("token")
-    window.localStorage.removeItem("admin")
     router.replace({path: '/LoginView'})
 }
 </script>
@@ -200,44 +172,44 @@ function SignOut() {
             <div class="lenav">
                 <div class="top">
                     <img
-                        src="../public/APP/logo.png"
-                        alt="">
+                            src="../public/APP/logo.png"
+                            alt="">
                     <span v-show="NowLang">
                         {{
-                            SystemName[0]
+                        SystemName[0]
                         }}
                     </span>
                     <span v-show="!NowLang"
                           class="enSystem">
                         {{
-                            SystemName[1]
+                        SystemName[1]
                         }}
                     </span>
                 </div>
                 <ul>
                     <template
-                        v-for="(item,index) in nav"
-                        :key="index">
+                            v-for="(item,index) in nav"
+                            :key="index">
                         <RouterLink
-                            :to="item.to">
+                                :to="item.to">
                             <li :class="checkNavNun === index?'checkNav':''"
                                 @click="changeNav(index)">
                                 <img
-                                    :src="item.img"
-                                    v-show="checkNavNun !== index"
-                                    alt="">
+                                        :src="item.img"
+                                        v-show="checkNavNun !== index"
+                                        alt="">
                                 <img
-                                    :src="item.isimg"
-                                    v-show="checkNavNun=== index"
-                                    alt="">
+                                        :src="item.isimg"
+                                        v-show="checkNavNun=== index"
+                                        alt="">
                                 <span v-show="NowLang">
                                     {{
-                                        item.name
+                                    item.name
                                     }}
                                 </span>
                                 <span v-show="!NowLang">
                                     {{
-                                        item.enName
+                                    item.enName
                                     }}
                                 </span>
                             </li>
@@ -254,46 +226,46 @@ function SignOut() {
                 <div class="leSetNav"
                      @click="setNav">
                     <img
-                        :class="showNav?'':'isSetNav'"
-                        src="../public/APP/setNav.png"
-                        alt="">
+                            :class="showNav?'':'isSetNav'"
+                            src="../public/APP/setNav.png"
+                            alt="">
                 </div>
                 <div class="title">
                     <span v-show="NowLang">{{
-                            title[0]
+                        title[0]
                         }}</span>
                     <span v-show="!NowLang">{{
-                            title[1]
+                        title[1]
                         }}</span>
                 </div>
                 <div class="riinfo">
                     <!-- 设置语言-->
                     <div class="lang">
                         <img v-show="NowLang"
-                             src="../public/APP/chImg.jpg"
+                             src="https://www.gov.cn/images/trs_m_gq.png"
                              alt="">
                         <img v-show="!NowLang"
                              src="https://img1.baidu.com/it/u=1608439503,245312181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=333"
                              alt="">
                         <div class="change">
                             <el-dropdown
-                                @command="ChangeLang(chengLang)">
+                                    @command="ChangeLang(chengLang)">
                                 <span class="el-dropdown-link">
                                   {{
-                                        upLang
+                                    upLang
                                     }}
                                   <el-icon
-                                      class="el-icon--right">
+                                          class="el-icon--right">
                                     <arrow-down/>
                                   </el-icon>
                                 </span>
                                 <template
-                                    #dropdown>
+                                        #dropdown>
                                     <el-dropdown-menu>
                                         <el-dropdown-item
-                                            command="英文">
+                                                command="英文">
                                             {{
-                                                chengLang
+                                            chengLang
                                             }}
                                         </el-dropdown-item>
                                     </el-dropdown-menu>
@@ -305,47 +277,41 @@ function SignOut() {
                     <div class="setshow"
                          @click="changeScreen">
                         <img
-                            :src="isMaxScreen?screenimg[1]:screenimg[0]"
-                            alt="">
+                                :src="isMaxScreen?screenimg[1]:screenimg[0]"
+                                alt="">
                     </div>
                     <!-- 用户信息-->
-                    <div class="userinfo"
-                         v-if="userInfos">
+                    <div class="userinfo">
                         <div class="name">
-                            {{
-                                userInfos.username
-                            }}
+                            admin
                         </div>
                         <div class="type">
-                            {{
-                                userInfos.name
-                            }}
+                            辅导员
                         </div>
                     </div>
                     <!--  用户头像-->
-                    <div class="userimg"
-                         v-if="userInfos">
+                    <div class="userimg">
                         <el-dropdown
-                            aria-expanded="true">
+                                aria-expanded="true">
                             <img aria-expanded="true"
-                                 :src="userInfos.userFace"
+                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4-lMtudkCpqfcYSjrZAFK_idZFy6eOetM4A&usqp=CAU"
                                  alt="">
                             <template
-                                #dropdown>
+                                    #dropdown>
                                 <el-dropdown-menu>
                                     <el-dropdown-item
-                                        command="用户中心">
+                                            command="用户中心">
                                         <el-button
-                                            text
-                                            @click="userinfo">
+                                                text
+                                                @click="userinfo">
                                             用户信息
                                         </el-button>
                                     </el-dropdown-item>
                                     <el-dropdown-item
-                                        command="退出登录">
+                                            command="退出登录">
                                         <el-button
-                                            text
-                                            @click="dialogVisible = true">
+                                                text
+                                                @click="dialogVisible = true">
                                             退出登录
                                         </el-button>
                                     </el-dropdown-item>
@@ -357,22 +323,21 @@ function SignOut() {
             </div>
             <!--退出登录的弹窗-->
             <el-dialog
-                class="SignOut"
-                v-model="dialogVisible"
-                title="退出登录"
-                width="30%"
-                center
-                :before-close="handleClose"
+                    class="SignOut"
+                    v-model="dialogVisible"
+                    title="退出登录"
+                    width="30%"
+                    center
+                    :before-close="handleClose"
             >
                 <span style="font-size: 18px">是否退出登录</span>
                 <template
-                    #footer>
+                        #footer>
                     <span class="dialog-footer">
+                    <el-button @click="CancelOut">取消</el-button>
                     <el-button
-                        @click="CancelOut">取消</el-button>
-                    <el-button
-                        type="danger"
-                        @click="SignOut">
+                            type="danger"
+                            @click="SignOut">
                         确定
                     </el-button>
                     </span>
@@ -382,7 +347,6 @@ function SignOut() {
             <div class="RiMain">
                 <RouterView></RouterView>
             </div>
-
         </div>
     </div>
 </template>
@@ -391,266 +355,266 @@ function SignOut() {
     scoped
     lang="less">
 .boss {
-    width: 100%;
-    height: 100vh;
-    background-color: #f5f5f5;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding-right: 25px;
-    overflow: hidden;
+  width: 100%;
+  height: 100vh;
+  background-color: #f5f5f5;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-right: 25px;
+  overflow: hidden;
 }
 
 //导航栏盒子
 .leBox {
-    transition: .4s;
-    width: 290px !important;
-    height: 100vh;
-    padding-right: 25px;
+  transition: .4s;
+  width: 290px;
+  height: 100vh;
+  padding-right: 25px;
 
-    .lenav {
-        width: 100%;
-        height: 100%;
-        background-color: #fff;
-        border-radius: 0 20px 20px 0;
-        line-height: 50px;
-        font-size: 18px;
+  .lenav {
+    width: 100%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 0 20px 20px 0;
+    line-height: 50px;
+    font-size: 18px;
 
-        .top {
-            width: 100%;
-            height: 80px;
-            padding: 15px 0 15px 25px;
-            font-size: 20px;
-            font-weight: 800;
-            display: flex;
-            align-items: center;
+    .top {
+      width: 100%;
+      height: 80px;
+      padding: 15px 0 15px 25px;
+      font-size: 20px;
+      font-weight: 800;
+      display: flex;
+      align-items: center;
 
-            img {
-                width: 40px;
-                height: 40px;
-                margin-right: 8px;
-            }
+      img {
+        width: 40px;
+        height: 40px;
+        margin-right: 8px;
+      }
 
-            span {
-                white-space: nowrap
-            }
+      span {
+        white-space: nowrap
+      }
 
-            .enSystem {
-                flex: 1;
-                white-space: normal;
-                line-height: 23px;
-                font-size: 16px;
-                overflow: hidden;
-            }
-        }
-
-        ul {
-            width: 100%;
-
-            a:hover {
-                color: #000;
-            }
-
-            li {
-                height: 70px;
-                padding-left: 30px;
-                border-radius: 0 15px 15px 0;
-                cursor: pointer;
-                display: flex;
-                align-items: center;
-                user-select: none;
-                margin: 5px 0;
-
-                &:not(.checkNav):hover {
-                    background-color: #dedcdc;
-                }
-
-                img {
-                    width: 20px;
-                    height: 20px;
-                    margin-right: 10px;
-                }
-
-                span {
-                    white-space: nowrap
-                }
-            }
-        }
-
-        //添加被选中类
-        .checkNav {
-            background-color: #4e8cee;
-            color: #fff;
-        }
+      .enSystem {
+        flex: 1;
+        white-space: normal;
+        line-height: 23px;
+        font-size: 16px;
+        overflow: hidden;
+      }
     }
+
+    ul {
+      width: 100%;
+
+      a:hover {
+        color: #000;
+      }
+
+      li {
+        height: 70px;
+        padding-left: 30px;
+        border-radius: 0 15px 15px 0;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+        user-select: none;
+        margin: 5px 0;
+
+        &:not(.checkNav):hover {
+          background-color: #dedcdc;
+        }
+
+        img {
+          width: 20px;
+          height: 20px;
+          margin-right: 10px;
+        }
+
+        span {
+          white-space: nowrap
+        }
+      }
+    }
+
+    //添加被选中类
+    .checkNav {
+      background-color: #4e8cee;
+      color: #fff;
+    }
+  }
 }
 
 //缩放后的迷你导航栏
 .minNav {
-    width: 100px !important;
+  width: 100px;
 
-    .lenav {
-        .top {
-            padding-left: 20px;
+  .lenav {
+    .top {
+      padding-left: 20px;
 
-            span {
-                display: none;
-            }
-        }
-
-        ul {
-            li {
-                span {
-                    display: none;
-                }
-            }
-        }
+      span {
+        display: none;
+      }
     }
+
+    ul {
+      li {
+        span {
+          display: none;
+        }
+      }
+    }
+  }
 }
 
 //右侧盒子
 .riBox {
-    flex: 1;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: space-between;
+  flex: 1;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 
-    //  右侧头部
-    .riTop {
-        width: 100%;
-        height: 60px;
-        background-color: #fff;
-        border-radius: 15px;
-        margin-bottom: 25px;
+  //  右侧头部
+  .riTop {
+    width: 100%;
+    height: 60px;
+    background-color: #fff;
+    border-radius: 15px;
+    margin-bottom: 25px;
+    display: flex;
+    align-items: center;
+    padding: 0 15px;
+
+    .leSetNav {
+      width: 30px;
+      height: 30px;
+      cursor: pointer;
+
+      img {
+        width: 30px;
+        height: 30px;
+      }
+    }
+
+    .isSetNav {
+      transform: rotate(180deg);
+    }
+
+    //  头部标题文字
+    .title {
+      flex: 1;
+      font-size: 22px;
+      font-weight: 800;
+      text-align: center;
+    }
+
+    //  右侧信息内容
+
+    .riinfo {
+      width: 360px;
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+
+      //  语言
+      .lang {
+        width: 130px;
         display: flex;
         align-items: center;
-        padding: 0 15px;
+        justify-content: space-between;
 
-        .leSetNav {
-            width: 30px;
-            height: 30px;
-            cursor: pointer;
-
-            img {
-                width: 30px;
-                height: 30px;
-            }
+        img {
+          width: 40px;
+          height: 26px;
         }
 
-        .isSetNav {
-            transform: rotate(180deg);
+        .change {
+          .el-dropdown {
+            display: block !important;
+            border: 3px solid transparent;
+            padding: 5px;
+
+            span {
+              outline: none;
+            }
+          }
+
+          .example-showcase {
+            border: none !important;
+
+            .el-dropdown-link {
+              border: none !important;
+              cursor: pointer;
+              color: var(--el-color-primary);
+              display: flex;
+              align-items: center;
+            }
+          }
+        }
+      }
+
+      //全屏
+      .setshow {
+        width: 35px;
+        height: 35px;
+
+        img {
+          width: 100%;
+          height: 100%;
+        }
+      }
+
+      //用户信息
+      .userinfo {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        text-align: right;
+
+        .name {
+          font-size: 16px;
+          font-weight: 800;
         }
 
-        //  头部标题文字
-        .title {
-            flex: 1;
-            font-size: 22px;
-            font-weight: 800;
-            text-align: center;
+        .type {
+          font-size: 13px;
+        }
+      }
+
+      //用户头像
+      .userimg {
+        width: 40px;
+        height: 40px;
+        margin-left: 10px;
+
+        img {
+          width: 100%;
+          border-radius: 25px;
+          outline: none;
         }
 
-        //  右侧信息内容
-
-        .riinfo {
-            width: 360px;
-            display: flex;
-            align-items: center;
-            justify-content: space-around;
-
-            //  语言
-            .lang {
-                width: 130px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-
-                img {
-                    width: 40px;
-                    height: 26px;
-                }
-
-                .change {
-                    .el-dropdown {
-                        display: block !important;
-                        border: 3px solid transparent;
-                        padding: 5px;
-
-                        span {
-                            outline: none;
-                        }
-                    }
-
-                    .example-showcase {
-                        border: none !important;
-
-                        .el-dropdown-link {
-                            border: none !important;
-                            cursor: pointer;
-                            color: var(--el-color-primary);
-                            display: flex;
-                            align-items: center;
-                        }
-                    }
-                }
-            }
-
-            //全屏
-            .setshow {
-                width: 35px;
-                height: 35px;
-
-                img {
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-
-            //用户信息
-            .userinfo {
-                display: flex;
-                flex-direction: column;
-                justify-content: space-around;
-                text-align: right;
-
-                .name {
-                    font-size: 16px;
-                    font-weight: 800;
-                }
-
-                .type {
-                    font-size: 13px;
-                }
-            }
-
-            //用户头像
-            .userimg {
-                width: 40px;
-                height: 40px;
-                margin-left: 10px;
-
-                img {
-                    width: 100%;
-                    height: 40px;
-                    border-radius: 25px;
-                    outline: none;
-                }
-
-                .el-dropdown-menu__item {
-                    justify-content: center;
-                }
-            }
+        .el-dropdown-menu__item {
+          justify-content: center;
         }
+      }
     }
+  }
 
-    //右侧主体
-    .RiMain {
-        width: 100%;
-        flex: 1;
-        background-color: #fff;
-        border-radius: 15px;
-        transition: .4s;
-    }
+  //右侧主体
+  .RiMain {
+    width: 100%;
+    flex: 1;
+    background-color: #fff;
+    border-radius: 15px;
+    transition: .4s;
+    position: relative;
+  }
 }
 </style>

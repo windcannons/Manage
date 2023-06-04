@@ -74,7 +74,6 @@
 <script
     setup>
 import {
-    adminInfo,
     login
 } from "@/axios/api"
 import {
@@ -108,14 +107,8 @@ function loginBtn() {
     }).then(res => {
         console.log(res)
         window.localStorage.setItem("token", res.data.obj.token)
-        if (res.data.code === 200) {
-            adminInfo().then(ress => {
-                console.log(ress)
-                if (ress.status === 200) {
-                    window.localStorage.setItem("admin", JSON.stringify(ress.data))
-                    router.replace({path: '/'})
-                }
-            })
+        if (res.data.code===200){
+            router.replace({path: '/'})
         }
     })
 }
