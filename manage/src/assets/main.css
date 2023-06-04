@@ -79,3 +79,7 @@ body {
 .clearfix {
   *zoom: 1
 }
+
+.el-overlay {
+  background-color: rgba(255,255,255,.5) !important;
+}

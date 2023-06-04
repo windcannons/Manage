@@ -9,8 +9,7 @@ provide("echarts", echarts);
 
 import {
     RouterLink,
-    RouterView,
-    useRoute
+    RouterView
 } from 'vue-router'
 // 引入element 相关组件
 import {
@@ -21,9 +20,7 @@ import {
     ref,
     onMounted,
     reactive,
-    provide,
-    watch,
-    getCurrentInstance
+    provide
 } from 'vue'
 
 // 引入全屏组件
@@ -32,8 +29,7 @@ import screenfull
 import router
     from "@/router";
 import {
-    ElMessageBox,
-    ElNotification
+    ElMessageBox
 } from "element-plus";
 
 // 页面名称
@@ -83,29 +79,7 @@ function changeNav(index) {
     checkNavNun.value = index
 }
 
-let userInfos = reactive(JSON.parse(window.localStorage.getItem("admin")) || {})
-const vm = getCurrentInstance().proxy
-// 监听$route对象的变化
-watch(() => vm.$route, (to, from) => {
-    if (from.path === "/LoginView") {
-        let useinfo = JSON.parse(window.localStorage.getItem("admin"))
-        for (let k in useinfo) {
-            userInfos[k] = useinfo[k]
-        }
-        if (window.localStorage.getItem("token")) {
-            ElNotification({
-                title: 'Success',
-                message: '登录成功',
-                type: 'success',
-            })
-        }
-    }
-})
-
 onMounted(() => {
-    if (!window.localStorage.getItem("token")) {
-        router.replace({path: '/LoginView'})
-    }
     let path = location.pathname
     if (path === '') {
         checkNavNun.value = 0
@@ -179,15 +153,11 @@ const handleClose = (done) => {
 
     })
 }
-
-function CancelOut() {
+function CancelOut(){
     dialogVisible.value = false
 }
-
-function SignOut() {
+function SignOut(){
     dialogVisible.value = false
-    window.localStorage.removeItem("token")
-    window.localStorage.removeItem("admin")
     router.replace({path: '/LoginView'})
 }
 </script>
@@ -270,7 +240,7 @@ function SignOut() {
                     <!-- 设置语言-->
                     <div class="lang">
                         <img v-show="NowLang"
-                             src="../public/APP/chImg.jpg"
+                             src="https://www.gov.cn/images/trs_m_gq.png"
                              alt="">
                         <img v-show="!NowLang"
                              src="https://img1.baidu.com/it/u=1608439503,245312181&fm=253&fmt=auto&app=138&f=JPEG?w=500&h=333"
@@ -309,26 +279,20 @@ function SignOut() {
                                 alt="">
                     </div>
                     <!-- 用户信息-->
-                    <div class="userinfo"
-                         v-if="userInfos">
+                    <div class="userinfo">
                         <div class="name">
-                            {{
-                            userInfos.username
-                            }}
+                            admin
                         </div>
                         <div class="type">
-                            {{
-                            userInfos.name
-                            }}
+                            辅导员
                         </div>
                     </div>
                     <!--  用户头像-->
-                    <div class="userimg"
-                         v-if="userInfos">
+                    <div class="userimg">
                         <el-dropdown
                                 aria-expanded="true">
                             <img aria-expanded="true"
-                                 :src="userInfos.userFace"
+                                 src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS4-lMtudkCpqfcYSjrZAFK_idZFy6eOetM4A&usqp=CAU"
                                  alt="">
                             <template
                                     #dropdown>
@@ -368,8 +332,7 @@ function SignOut() {
                 <template
                         #footer>
                     <span class="dialog-footer">
-                    <el-button
-                            @click="CancelOut">取消</el-button>
+                    <el-button @click="CancelOut">取消</el-button>
                     <el-button
                             type="danger"
                             @click="SignOut">
@@ -382,7 +345,6 @@ function SignOut() {
             <div class="RiMain">
                 <RouterView></RouterView>
             </div>
-
         </div>
     </div>
 </template>
@@ -404,7 +366,7 @@ function SignOut() {
 //导航栏盒子
 .leBox {
   transition: .4s;
-  width: 290px !important;
+  width: 290px;
   height: 100vh;
   padding-right: 25px;
 
@@ -487,7 +449,7 @@ function SignOut() {
 
 //缩放后的迷你导航栏
 .minNav {
-  width: 100px !important;
+  width: 100px;
 
   .lenav {
     .top {
@@ -632,7 +594,6 @@ function SignOut() {
 
         img {
           width: 100%;
-          height: 40px;
           border-radius: 25px;
           outline: none;
         }
