@@ -1,5 +1,5 @@
 <template>
-  <!--登录-->
+    <!--登录-->
     <div class="LoginView">
         <div class="from">
             <div class="main">
@@ -8,8 +8,8 @@
                 <div class="username inpBox">
                     <div class="imgBox">
                         <img
-                                src="../../public/Login/user.png"
-                                alt="">
+                            src="../../public/Login/user.png"
+                            alt="">
                     </div>
                     <input type="text"
                            name=""
@@ -20,8 +20,8 @@
                 <div class="pass inpBox">
                     <div class="imgBox">
                         <img
-                                src="../../public/Login/pass.png"
-                                alt="">
+                            src="../../public/Login/pass.png"
+                            alt="">
                     </div>
                     <input type="text"
                            name=""
@@ -32,8 +32,8 @@
                 <div class="imgpass inpBox">
                     <div class="imgBox">
                         <img
-                                src="../../public/Login/passimg.png"
-                                alt="">
+                            src="../../public/Login/passimg.png"
+                            alt="">
                     </div>
                     <input type="text"
                            name=""
@@ -47,17 +47,17 @@
                 <!--    登录按钮-->
                 <div class="loginBtn">
                     <el-button
-                            type="primary"
-                            round
-                            class="login"
-                            @click="loginBtn">
+                        type="primary"
+                        round
+                        class="login"
+                        @click="loginBtn">
                         登录
                     </el-button>
                     <el-button
-                            type="primary"
-                            round
-                            class="reset"
-                            @click="reset">
+                        type="primary"
+                        round
+                        class="reset"
+                        @click="reset">
                         重置
                     </el-button>
                 </div>
@@ -126,110 +126,110 @@ function loginBtn() {
     scoped
     lang="less">
 .LoginView {
-  width: 100%;
-  height: 100vh;
-  background-color: #fff;
-  z-index: 9;
-  position: fixed;
-  top: 0;
-  left: 0;
-  display: flex;
-  align-items: center;
-  justify-content: space-around;
-  padding: 0 30px;
-  /*表单*/
-
-  .from {
-    flex: 0.35;
-    height: 600px;
+    width: 100%;
+    height: 100vh;
+    background-color: #fff;
+    z-index: 9;
+    position: fixed;
+    top: 0;
+    left: 0;
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: space-around;
+    padding: 0 30px;
+    /*表单*/
 
-    .main {
-      width: 550px;
-      height: 500px;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-
-      h1 {
-        font-size: 42px;
-        color: #444;
-        margin-bottom: 25px;
-      }
-
-      .inpBox {
-        width: 520px;
-        height: 80px;
-        border-radius: 40px;
-        background-color: #f0f0f0;
+    .from {
+        flex: 0.35;
+        height: 600px;
         display: flex;
         align-items: center;
-        overflow: auto;
-        margin: 13px;
+        justify-content: center;
 
-        .imgBox {
-          width: 75px;
-          height: 100%;
-          display: flex;
-          align-items: center;
-          justify-content: center;
+        .main {
+            width: 550px;
+            height: 500px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
 
-          img {
-            width: 28px;
-            height: 28px;
-          }
+            h1 {
+                font-size: 42px;
+                color: #444;
+                margin-bottom: 25px;
+            }
 
+            .inpBox {
+                width: 520px;
+                height: 80px;
+                border-radius: 40px;
+                background-color: #f0f0f0;
+                display: flex;
+                align-items: center;
+                overflow: auto;
+                margin: 13px;
+
+                .imgBox {
+                    width: 75px;
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+
+                    img {
+                        width: 28px;
+                        height: 28px;
+                    }
+
+                }
+
+                input {
+                    flex: 0.85;
+                    height: 100%;
+                    background-color: #f0f0f0;
+                    font-size: 22px;
+                    color: #333;
+                    font-weight: 800;
+                }
+
+
+                .PassCode {
+                    width: 140px;
+                    height: 61px;
+                    margin-right: 20px;
+                    background-color: cornflowerblue;
+                }
+            }
+
+            //    登录按钮
+            .loginBtn {
+                width: 80%;
+                height: 80px;
+                display: flex;
+                align-items: center;
+                justify-content: space-around;
+
+                button {
+                    width: 200px;
+                    height: 70px;
+                    border-radius: 35px;
+                    font-size: 20px;
+                }
+            }
         }
+    }
 
-        input {
-          flex: 0.85;
-          height: 100%;
-          background-color: #f0f0f0;
-          font-size: 22px;
-          color: #333;
-          font-weight: 800;
-        }
-
-
-        .PassCode {
-          width: 140px;
-          height: 61px;
-          margin-right: 20px;
-          background-color: cornflowerblue;
-        }
-      }
-
-      //    登录按钮
-      .loginBtn {
-        width: 80%;
-        height: 80px;
+    .bg {
+        flex: 0.55;
+        height: 68%;
         display: flex;
         align-items: center;
-        justify-content: space-around;
+        justify-content: center;
 
-        button {
-          width: 200px;
-          height: 70px;
-          border-radius: 35px;
-          font-size: 20px;
+        img {
+            width: 100%;
+            height: 100%;
         }
-      }
     }
-  }
-
-  .bg {
-    flex: 0.55;
-    height: 68%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-
-    img {
-      width: 100%;
-      height: 100%;
-    }
-  }
 }
 </style>

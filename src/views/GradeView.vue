@@ -1,5 +1,5 @@
 <template>
-  <!--成绩管理-->
+    <!--成绩管理-->
     <div class="main"
          @click="loseInp">
         <div class="top">
@@ -12,16 +12,16 @@
                 <button class="logn"
                         @click="logn">
                     <img
-                            src="../../public/Grade/logn%20.png"
-                            alt="">
+                        src="../../public/Grade/logn%20.png"
+                        alt="">
                     <span>搜索</span>
                 </button>
                 <button class="out"
                         :plain="true"
                         @click="open2">
                     <img
-                            src="../../public/Grade/load.png"
-                            alt="">
+                        src="../../public/Grade/load.png"
+                        alt="">
                     导出
                 </button>
             </div>
@@ -69,59 +69,59 @@
                     :key="index">
                     <td>
                         {{
-                        item.stItmId
+                            item.stItmId
                         }}
                     </td>
                     <td>
                         {{
-                        item.stCompleteCount
+                            item.stCompleteCount
                         }}
                     </td>
                     <td>
                         <p>
                             {{
-                            item.itmUUid
+                                item.itmUUid
                             }}
                         </p>
                     </td>
                     <td>
                         {{
-                        item.stItmTitle
+                            item.stItmTitle
                         }}
                     </td>
                     <td>
                         {{
-                        item.stUsername
+                            item.stUsername
                         }}
                     </td>
                     <td>
                         {{
-                        item.stName
+                            item.stName
                         }}
                     </td>
                     <td>
                         {{
-                        item.stTkCount
+                            item.stTkCount
                         }}
                     </td>
                     <td>
                         {{
-                        item.stCompleteCount
+                            item.stCompleteCount
                         }}
                     </td>
                     <td>
                         {{
-                        item.stAverage
+                            item.stAverage
                         }}
                     </td>
                     <td>
                         {{
-                        item.stTotalScore
+                            item.stTotalScore
                         }}
                     </td>
                     <td>
                         {{
-                        item.stEndTime
+                            item.stEndTime
                         }}
                     </td>
 
@@ -132,15 +132,15 @@
         <div class="fot">
             <div>
                 <el-pagination
-                        v-model:current-page="currentPage4"
-                        v-model:page-size="pageSize4"
-                        :page-sizes="[2, 4, 6, 10]"
-                        :disabled="disabled"
-                        :background="true"
-                        layout="total, sizes, prev, pager, next, jumper"
-                        :total="total"
-                        @size-change="handleSizeChange"
-                        @current-change="handleSizeChange"
+                    v-model:current-page="currentPage4"
+                    v-model:page-size="pageSize4"
+                    :page-sizes="[2, 4, 6, 10]"
+                    :disabled="disabled"
+                    :background="true"
+                    layout="total, sizes, prev, pager, next, jumper"
+                    :total="total"
+                    @size-change="handleSizeChange"
+                    @current-change="handleSizeChange"
                 />
             </div>
         </div>
@@ -235,194 +235,194 @@ Transcript(currentPage.value, pageSize.value).then(res => {
     scoped
     lang="less">
 .main {
-  width: 100%;
-  height: 100%;
-  position: relative;
-  padding: 20px;
-  justify-content: center;
-  align-items: center;
+    width: 100%;
+    height: 100%;
+    position: relative;
+    padding: 20px;
+    justify-content: center;
+    align-items: center;
 }
 
 .top {
-  width: 100%;
-  height: 5vh;
-  /*background-color: #4e8cee;*/
-  display: flex;
-  justify-content: space-between
+    width: 100%;
+    height: 5vh;
+    /*background-color: #4e8cee;*/
+    display: flex;
+    justify-content: space-between
 }
 
 .topLeft {
-  width: 40%;
-  height: 100%;
-  /*background-color: #2c3e50;*/
-  display: flex;
-  justify-content: flex-start;
-
-  input {
-    width: 80%;
+    width: 40%;
     height: 100%;
-    border-radius: 4px;
-    box-sizing: border-box;
-    padding-left: 10px;
-    margin-right: 15px;
-    border: 1px solid #e0e2e9;
-  }
+    /*background-color: #2c3e50;*/
+    display: flex;
+    justify-content: flex-start;
+
+    input {
+        width: 80%;
+        height: 100%;
+        border-radius: 4px;
+        box-sizing: border-box;
+        padding-left: 10px;
+        margin-right: 15px;
+        border: 1px solid #e0e2e9;
+    }
 }
 
 .logn {
-  width: 25%;
-  height: 100%;
-  border-radius: 10px;
-  box-sizing: border-box;
-  text-align: center;
-  background-color: #409eff;
-  color: white;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 25%;
+    height: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #409eff;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  img {
-    display: block;
-    //padding-left: 5px;
-    margin-right: 5px;
-    width: 14px;
-    height: 14px;
-  }
+    img {
+        display: block;
+        //padding-left: 5px;
+        margin-right: 5px;
+        width: 14px;
+        height: 14px;
+    }
 }
 
 .out {
-  width: 25%;
-  height: 100%;
-  border-radius: 10px;
-  box-sizing: border-box;
-  text-align: center;
-  background-color: #67c23a;
-  color: #fff;
-  margin-left: 10px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+    width: 25%;
+    height: 100%;
+    border-radius: 10px;
+    box-sizing: border-box;
+    text-align: center;
+    background-color: #67c23a;
+    color: #fff;
+    margin-left: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
-  img {
-    display: block;
-    //padding-left: 5px;
-    margin-right: 5px;
-    width: 14px;
-    height: 14px;
-  }
+    img {
+        display: block;
+        //padding-left: 5px;
+        margin-right: 5px;
+        width: 14px;
+        height: 14px;
+    }
 }
 
 img {
-  width: 15px;
-  color: #fff;
+    width: 15px;
+    color: #fff;
 }
 
 .nav {
-  width: 100%;
-  margin-bottom: 10px;
-  margin-top: 10px;
-
-  table {
     width: 100%;
-    border-spacing: 0;
-    border-collapse: collapse;
+    margin-bottom: 10px;
+    margin-top: 10px;
 
-    tr {
-      height: 50px;
+    table {
+        width: 100%;
+        border-spacing: 0;
+        border-collapse: collapse;
 
-      &:hover {
-        background-color: #f5f7fa;
-      }
+        tr {
+            height: 50px;
 
-      td, th {
-        border: 1px solid #ccc;
+            &:hover {
+                background-color: #f5f7fa;
+            }
+
+            td, th {
+                border: 1px solid #ccc;
 
 
-        &:nth-child(1) {
-          width: 6.4%;
+                &:nth-child(1) {
+                    width: 6.4%;
+                }
+
+                &:nth-child(2) {
+                    width: 6.1%;
+                }
+
+                &:nth-child(3) {
+                    width: 23.5% !important;
+
+                    p {
+                        width: 260px;
+                        padding-right: 15px;
+                        overflow: hidden;
+                        text-overflow: ellipsis;
+                        white-space: nowrap;
+                    }
+                }
+
+                &:nth-child(4) {
+                    width: 8%;
+                }
+
+                &:nth-child(5) {
+                    width: 8%;
+                }
+
+                &:nth-child(6) {
+                    width: 8%;
+                }
+
+                &:nth-child(7) {
+                    width: 6.5%;
+                }
+
+                &:nth-child(8) {
+                    width: 8%;
+                }
+
+                &:nth-child(9) {
+                    width: 8%;
+                }
+
+                &:nth-child(10) {
+                    width: 7%;
+                }
+
+                &:nth-child(11) {
+                    width: 10.5%;
+                }
+            }
+
+            th {
+                color: #a89d99;
+                font-size: 15px;
+            }
+
+            td {
+                font-size: 14px;
+                color: #787a7d;
+                padding-left: 15px;
+
+                div {
+                    height: 100%;
+                    display: flex;
+                    align-items: center;
+
+                    .ml-2 {
+                        margin-right: 5px;
+                    }
+                }
+            }
         }
-
-        &:nth-child(2) {
-          width: 6.1%;
-        }
-
-        &:nth-child(3) {
-          width: 23.5% !important;
-
-          p {
-            width: 260px;
-            padding-right: 15px;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-        }
-
-        &:nth-child(4) {
-          width: 8%;
-        }
-
-        &:nth-child(5) {
-          width: 8%;
-        }
-
-        &:nth-child(6) {
-          width: 8%;
-        }
-
-        &:nth-child(7) {
-          width: 6.5%;
-        }
-
-        &:nth-child(8) {
-          width: 8%;
-        }
-
-        &:nth-child(9) {
-          width: 8%;
-        }
-
-        &:nth-child(10) {
-          width: 7%;
-        }
-
-        &:nth-child(11) {
-          width: 10.5%;
-        }
-      }
-
-      th {
-        color: #a89d99;
-        font-size: 15px;
-      }
-
-      td {
-        font-size: 14px;
-        color: #787a7d;
-        padding-left: 15px;
-
-        div {
-          height: 100%;
-          display: flex;
-          align-items: center;
-
-          .ml-2 {
-            margin-right: 5px;
-          }
-        }
-      }
     }
-  }
 }
 
 .fot {
-  position: absolute;
-  bottom: 50px;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+    position: absolute;
+    bottom: 50px;
+    left: 0;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 </style>
